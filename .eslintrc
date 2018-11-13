@@ -1,0 +1,34 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "jest": true,
+    "node": true,
+    "serviceworker": true
+  },
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "globals": {
+    "SyntheticEvent": true,
+    "SyntheticAnimationEvent": true,
+    "SyntheticClipboardEvent": true,
+    "SyntheticCompositionEvent": true,
+    "SyntheticInputEvent": true,
+    "SyntheticUIEvent": true,
+    "SyntheticFocusEvent": true,
+    "SyntheticKeyboardEvent": true,
+    "SyntheticMouseEvent": true,
+    "SyntheticDragEvent": true,
+    "SyntheticWheelEvent": true,
+    "SyntheticTouchEvent": true,
+    "SyntheticTransitionEvent": true
+  },
+  "plugins": ["react", "jsx-a11y", "import", "flowtype"],
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prefer-stateless-function": 1,
+    "no-console": 0
+  }
+}
