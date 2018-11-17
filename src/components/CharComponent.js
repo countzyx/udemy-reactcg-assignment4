@@ -2,6 +2,14 @@
 import * as React from 'react';
 import './CharComponent.css';
 
-const CharComponent = () => <div className="char-component" />;
+type Props = {
+  char: string,
+};
 
-export default CharComponent();
+const CharComponent = (props: Props) => {
+  const { char } = props;
+
+  return <div className="char-component">{char.split('')[0]}</div>;
+};
+
+export default CharComponent;

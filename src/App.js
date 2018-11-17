@@ -3,32 +3,51 @@ import * as React from 'react';
 import { Alert, Input } from 'reactstrap';
 import ValidationComponent from './components/ValidationComponent';
 import './App.css';
+import CharComponent from './components/CharComponent';
 
 type Props = {};
 type State = {
-  textLength: number,
+  text: ?string,
   minimumLength: number,
 };
 
 class App extends React.Component<Props, State> {
   state = {
-    textLength: 0,
+    text: null,
     minimumLength: 5,
   };
 
-  onChangeReportTextLength = (event: SyntheticEvent<HTMLInputElement>) => {
-    const textLength = event.currentTarget.value ? event.currentTarget.value.length : 0;
-    this.setState({ textLength });
+  onChangeUpdateText = (event: SyntheticEvent<HTMLInputElement>) => {
+    const text = event.currentTarget.value;
+    this.setState({ text });
   };
 
   render = () => {
-    const { textLength, minimumLength } = this.state;
+    const { text, minimumLength } = this.state;
+
+    let charComponents = null;
+
+    if (text != null && text.length) {
+      const chars = text.split('');
+      charComponents = (
+        <div>
+          {chars.map((c, i) => (
+            <CharComponent
+              char={c}
+              // eslint-disable-next-line react/no-array-index-key
+              key={i}
+            />
+          ))}
+        </div>
+      );
+    }
 
     return (
       <div className="App">
-        <Input type="text" onChange={this.onChangeReportTextLength} />
-        <Alert color="info">{textLength}</Alert>
-        <ValidationComponent textLength={textLength} minimumLength={minimumLength} />
+        <Input type="text" onChange={this.onChangeUpdateText} />
+        <Alert color="info">{text ? text.length : 0}</Alert>
+        <ValidationComponent textLength={text ? text.length : 0} minimumLength={minimumLength} />
+        {charComponents}
       </div>
     );
   };
