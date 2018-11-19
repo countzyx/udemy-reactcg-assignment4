@@ -9,7 +9,7 @@ _Tracking completed instructions with strike-throughs_
 3. ~~Inside the ValidationComponent, either output "Text too short"or "Text long enough" depending on the text length (e.g. take 5 as a minimum length).~~
 4. ~~Create another component (=> CharComponent) and style it as an inline box (=> display: inline-block, padding: 16px, text-align: center, margin: 16px, border: 1px solid black).~~
 5. ~~Render a list of CharComponents where each CharComponent receives a different letter of the entered text (in the initial input field) as a prop.~~
-6. When you click a CharComponent, it should be removed from the entered text.
+6. ~~When you click a CharComponent, it should be removed from the entered text.~~
 
 Hint: Keep in mind that Javascript strings are basically arrays!
 

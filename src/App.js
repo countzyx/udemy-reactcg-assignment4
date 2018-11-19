@@ -13,13 +13,22 @@ type State = {
 
 class App extends React.Component<Props, State> {
   state = {
-    text: null,
+    text: '',
     minimumLength: 5,
   };
 
   onChangeUpdateText = (event: SyntheticEvent<HTMLInputElement>) => {
     const text = event.currentTarget.value;
     this.setState({ text });
+  };
+
+  onClickDeleteChar = (id: number) => {
+    const { text } = this.state;
+    if (text != null && text.length) {
+      const textArray = text.split('');
+      textArray.splice(id, 1);
+      this.setState({ text: textArray.join('') });
+    }
   };
 
   render = () => {
@@ -34,6 +43,7 @@ class App extends React.Component<Props, State> {
           {chars.map((c, i) => (
             <CharComponent
               char={c}
+              onClickHandler={() => this.onClickDeleteChar(i)}
               // eslint-disable-next-line react/no-array-index-key
               key={i}
             />
@@ -44,7 +54,7 @@ class App extends React.Component<Props, State> {
 
     return (
       <div className="App">
-        <Input type="text" onChange={this.onChangeUpdateText} />
+        <Input type="text" onChange={this.onChangeUpdateText} value={text} />
         <Alert color="info">{text ? text.length : 0}</Alert>
         <ValidationComponent textLength={text ? text.length : 0} minimumLength={minimumLength} />
         {charComponents}
