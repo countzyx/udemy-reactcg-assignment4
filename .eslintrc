@@ -4,11 +4,7 @@
   "env": {
     "browser": true,
     "jest": true,
-    "node": true,
-    "serviceworker": true
-  },
-  "ecmaFeatures": {
-    "jsx": true
+    "node": true
   },
   "globals": {
     "SyntheticEvent": true,
@@ -25,10 +21,11 @@
     "SyntheticTouchEvent": true,
     "SyntheticTransitionEvent": true
   },
-  "plugins": ["react", "import", "flowtype"],
+  "plugins": ["react", "jsx-a11y", "import", "flowtype"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/prefer-stateless-function": 1,
-    "no-console": 0
+    "react/prefer-stateless-function": "warn",
+    "jsx-a11y/click-events-have-key-events": "warn",
+    "jsx-a11y/no-noninteractive-element-interactions": "warn"
   }
 }
